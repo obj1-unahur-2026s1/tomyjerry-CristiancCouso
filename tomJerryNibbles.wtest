@@ -1,17 +1,45 @@
 import tomJerryNibbles.*
 
-describe "Grupo de test" {
+describe "Test del escenario de Tom , Yerry , Niblles y Ricardo" {
 
-  test "test 1" {
-    assert.equals(100, 50+50)
+  test "Al inicio, la velocidad máxima de Tom es 10 " {
+   // assert.equals(100, 50+50)// (valor que espero, mensaje de consulta+mensaje de consulta)
+      assert.equals (10, tom.velocidad())
   }
 
-  test "test 3" {
-    assert.that(true)
+  test "Si come a Jerry, la velocidad máxima pasa a ser 15.2" {
+   tom.comer(jerry)
+    assert.equals(15.2, tom.velocidad()) // devulve un booleano. Da bien cuando da True.
+    assert.equals(102, tom.energia()) //lo recomendable es hacer un ASSERT por TEST!!!
   }
 
-  test "test 4" {
-    assert.notThat(false)
+  test "Si tom come a jerry, su energia es 102" {
+    tom.comer(jerry)
+    assert.equals(102, tom.energia()) //lo recomendable es hacer un ASSERT por TEST!!!
+    //assert.notThat(false) // este test da bien cuando el resultado da FALSO
   }
+
+  test "Si corre 24 metros, velocidad maxima pasa a ser 14" {
+    tom.comer(jerry) // VUELVO A PONER ESTO PORQUE SE REINICIA, entonces es necesario poner tom.comer(jerry)
+    tom.correr(24)
+    assert.equals(14, tom.velocidad())
+    //ssert.notThat(false) // este test da bien cuando el resultado da FALSO
+  }
+ test "Si come a Nibbles, pasa a tener velocidad maxima 18.7" {
+    tom.comer(jerry) // VUELVO A PONER ESTO PORQUE SE REINICIA, entonces es necesario poner tom.comer(jerry)
+    tom.correr(24)
+    tom.comer(nibbles)
+    assert.equals(18.7, tom.velocidad())
+    //ssert.notThat(false) // este test da bien cuando el resultado da FALSO
+  }
+
+test "i Jerry cumple años (3 años de edad), y luego Tom lo vuelve a comer, pasaría a tener 25.9 (su energia es 209)
+si corre 38 metros su velocidad pasa a ser 24 (su energia es 190)"{
+  tom.comer(jerry) // VUELVO A PONER ESTO PORQUE SE REINICIA, entonces es necesario poner tom.comer(jerry)
+    tom.correr(24)
+    tom.comer(nibbles)
+    tom.comer(jerry)
+    assert.equals(23.9, tom.velocidad())
+}
 
 }
